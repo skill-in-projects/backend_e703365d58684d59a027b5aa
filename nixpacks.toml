@@ -1,0 +1,19 @@
+# Nixpacks configuration for Railway - Ruby/Sinatra Backend
+# Backend files are at root level
+
+[phases.setup]
+nixPkgs = { ruby = "3.3" }
+
+[phases.install]
+cmds = [
+  "rm -f Gemfile.lock && bundle install"
+]
+
+[phases.build]
+cmds = [
+  "bundle install",
+  "ruby build_check.rb"
+]
+
+[start]
+cmd = "ruby app.rb"
